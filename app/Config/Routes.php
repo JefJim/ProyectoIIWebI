@@ -57,16 +57,18 @@ $routes->group('admin', ['filter' => 'adminAuth'], function ($routes) {
 });
 
 // Grupo de rutas para el amigo
+
 $routes->group('amigo', ['filter' => 'amigoAuth'], function ($routes) {
-    $routes->get('dashboard', 'Amigo::dashboard'); // Página principal del amigo
+    $routes->get('/', 'Amigo::dashboard'); // Página principal del amigo
+    $routes->get('dashboard', 'Amigo::dashboard'); // También permite acceder a través de /amigo/dashboard
     $routes->get('arboles', 'Amigo::listAvailableTrees'); // Árboles disponibles
     $routes->get('arboles/(:num)/comprar', 'Amigo::buyTree/$1'); // Comprar árbol
     $routes->post('arboles/(:num)/comprar', 'Amigo::storePurchase/$1'); // Guardar compra
     $routes->get('mis-arboles', 'Amigo::listMyTrees'); // Mis árboles
     $routes->get('mis-arboles/(:num)', 'Amigo::viewTree/$1'); // Detalles del árbol
-    $routes->get('amigo/mis-arboles/(:num)/historial', 'Amigo::viewHistorial/$1');
-    $routes->get('mis-arboles/(:num)/historial', 'Amigo::viewHistorial/$1');
+    $routes->get('mis-arboles/(:num)/historial', 'Amigo::viewHistorial/$1'); // Historial del árbol
 });
+
 
 $routes->get('admin/arboles/(:num)', 'Admin::viewTree/$1'); // Ver detalles del árbol
 

@@ -19,14 +19,6 @@
                 <div class="px-4 py-5 sm:px-6">
                     <h1 class="text-2xl font-bold text-green-900">Historial del Árbol</h1>
                 </div>
-                <div class="border-t border-gray-200">
-                    <div class="px-4 py-5 sm:px-6">
-                        <h2 class="text-lg font-medium text-green-900">Detalles del Árbol</h2>
-                        <p class="text-sm text-gray-900"><strong>Especie:</strong> <?= esc($arbol['especie']) ?></p>
-                        <p class="text-sm text-gray-900"><strong>Ubicación:</strong> <?= esc($arbol['ubicacion']) ?></p>
-                        <p class="text-sm text-gray-900"><strong>Estado:</strong> <?= ucfirst(esc($arbol['estado'])) ?></p>
-                    </div>
-                </div>
 
                 <div class="px-4 py-5 sm:px-6">
                     <h2 class="text-lg font-medium text-green-900 mb-4">Historial de Actualizaciones</h2>

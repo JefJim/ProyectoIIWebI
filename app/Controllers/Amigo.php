@@ -14,21 +14,36 @@ class Amigo extends BaseController
 
     public function listAvailableTrees()
     {
-        $treeModel = new Tree();
+        $treeModel = new \App\Models\Tree();
 
-        // Obtener árboles disponibles
-        $data['arboles'] = $treeModel->where('estado', 'disponible')->findAll();
+        // Obtener árboles disponibles junto con el nombre comercial de la especie
+        $data['arboles'] = $treeModel->select('arboles.*, especies.nombre_comercial AS especie')
+            ->join('especies', 'especies.id = arboles.especie_id', 'left')
+            ->where('arboles.estado', 'disponible')
+            ->findAll();
 
         return view('amigo/trees/list_available', $data);
     }
 
+
     public function buyTree($tree_id)
     {
-        $treeModel = new Tree();
-        $data['arbol'] = $treeModel->find($tree_id);
+        $treeModel = new \App\Models\Tree();
+
+        // Obtener el árbol junto con el nombre de la especie
+        $data['arbol'] = $treeModel->select('arboles.*, especies.nombre_comercial AS especie_nombre')
+            ->join('especies', 'arboles.especie_id = especies.id')
+            ->where('arboles.id', $tree_id)
+            ->first();
+
+        // Validar si el árbol existe
+        if (!$data['arbol']) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('El árbol no existe.');
+        }
 
         return view('amigo/trees/buy', $data);
     }
+
 
     public function storePurchase($tree_id)
     {
@@ -65,8 +80,12 @@ class Amigo extends BaseController
     {
         $treeModel = new \App\Models\Tree();
 
-        // Verificar que el árbol exista y que pertenezca al usuario actual
-        $tree = $treeModel->where('id', $tree_id)->where('amigo_id', session('user')['id'])->first();
+        // Obtener el árbol con el nombre de la especie y verificar que pertenezca al usuario actual
+        $tree = $treeModel->select('arboles.*, especies.nombre_comercial AS especie_nombre')
+            ->join('especies', 'arboles.especie_id = especies.id')
+            ->where('arboles.id', $tree_id)
+            ->where('arboles.amigo_id', session('user')['id'])
+            ->first();
 
         if (!$tree) {
             return redirect()->back()->with('error', 'El árbol no existe o no te pertenece.');
@@ -76,25 +95,32 @@ class Amigo extends BaseController
         return view('amigo/trees/view_tree', ['arbol' => $tree]);
     }
 
+
     public function viewHistorial($id)
     {
         $historialModel = new \App\Models\HistorialArboles();
         $treeModel = new \App\Models\Tree();
-    
-        // Verificar si el árbol pertenece al amigo actual
+
+        // Verificar si el árbol pertenece al amigo actual e incluir el nombre de la especie
         $amigoId = session()->get('user')['id'];
-        $arbol = $treeModel->where('id', $id)->where('amigo_id', $amigoId)->first();
-    
+        $arbol = $treeModel->select('arboles.*, especies.nombre_comercial AS especie_nombre')
+            ->join('especies', 'arboles.especie_id = especies.id')
+            ->where('arboles.id', $id)
+            ->where('arboles.amigo_id', $amigoId)
+            ->first();
+
         if (!$arbol) {
             return redirect()->to('/amigo/mis-arboles')->with('error', 'No tienes permiso para ver este árbol.');
         }
-    
-        // Obtener el historial del árbol
-        $data['historial'] = $historialModel->where('arbol_id', $id)->findAll();
+
+        // Obtener solo los campos necesarios del historial
+        $data['historial'] = $historialModel->select('fecha, tamano, foto')
+            ->where('arbol_id', $id)
+            ->findAll();
+
         $data['arbol'] = $arbol;
-    
+
         // Cargar la vista
         return view('amigo/trees/historial', $data);
     }
-    
 }
