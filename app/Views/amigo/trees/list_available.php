@@ -37,7 +37,7 @@
                                     <td class="px-6 py-4">
                                         <img src="<?= base_url('uploads/' . esc($arbol['foto'])) ?>" alt="Foto del árbol" class="w-24 rounded">
                                     </td>
-                                    <td class="px-6 py-4"><?= esc($arbol['especie']) ?></td>
+                                    <td class="px-6 py-4"><?= esc($arbol['especie_nombre']) ?></td>
                                     <td class="px-6 py-4"><?= esc($arbol['ubicacion']) ?></td>
                                     <td class="px-6 py-4">$<?= esc($arbol['precio']) ?></td>
                                     <td class="px-6 py-4">

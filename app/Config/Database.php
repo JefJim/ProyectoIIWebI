@@ -28,7 +28,7 @@ class Database extends Config
         'DSN'          => '',
         'hostname'     => 'localhost',
         'username'     => 'root',
-        'password'     => 'duke',
+        'password'     => '',
         'database'     => 'project2',
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',

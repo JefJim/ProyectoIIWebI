@@ -58,7 +58,7 @@ $routes->group('admin', ['filter' => 'adminAuth'], function ($routes) {
 
 // Grupo de rutas para el amigo
 $routes->group('amigo', ['filter' => 'amigoAuth'], function ($routes) {
-    $routes->get('/', 'Amigo::dashboard'); // Página principal del amigo
+    $routes->get('dashboard', 'Amigo::dashboard'); // Página principal del amigo
     $routes->get('arboles', 'Amigo::listAvailableTrees'); // Árboles disponibles
     $routes->get('arboles/(:num)/comprar', 'Amigo::buyTree/$1'); // Comprar árbol
     $routes->post('arboles/(:num)/comprar', 'Amigo::storePurchase/$1'); // Guardar compra
@@ -70,23 +70,19 @@ $routes->group('amigo', ['filter' => 'amigoAuth'], function ($routes) {
 
 $routes->get('admin/arboles/(:num)', 'Admin::viewTree/$1'); // Ver detalles del árbol
 
-
 $routes->post('/admin/arboles/(:num)/historial/guardar', 'Admin::saveHistorial/$1');
-
 
 $routes->get('/admin/arboles/(:num)/historial/agregar', 'Admin::updateHistorialForm/$1');
 $routes->post('/admin/arboles/(:num)/historial/agregar', 'Admin::saveHistorial/$1');
 
-
-
 $routes->get('/admin/arboles/(:num)/historial', 'Admin::viewHistorial/$1');
 
-
-
-
-
-
-
-
-
-
+// rutas de operador
+$routes->group('operador', ['filter' => 'operadorAuth'], function ($routes) {
+    $routes->get('dashboard', 'Operador::dashboard'); // Página principal del operador
+    $routes->get('usuarios/crear', 'Admin::createUser');
+    $routes->post('usuarios/crear', 'Admin::storeUser');
+    $routes->get('usuarios/editar/(:num)', 'Admin::editUser/$1');
+    $routes->post('usuarios/editar/(:num)', 'Admin::updateUser/$1');
+    $routes->get('usuarios/eliminar/(:num)', 'Admin::deleteUser/$1');
+});

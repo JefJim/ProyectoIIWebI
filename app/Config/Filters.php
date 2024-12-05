@@ -36,6 +36,7 @@ class Filters extends BaseFilters
         'performance'   => PerformanceMetrics::class,
         'adminAuth'     => \App\Filters\AdminAuth::class,
         'amigoAuth'     => \App\Filters\AmigoAuthFilter::class,
+        'operadorAuth'     => \App\Filters\OperadorAuthFilter::class,
     ];
 
     /**
