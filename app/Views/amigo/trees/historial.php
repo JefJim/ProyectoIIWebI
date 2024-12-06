@@ -45,7 +45,7 @@
                                             <td class="px-6 py-4"><?= esc($entry['tamano']) ?></td>
                                             <td class="px-6 py-4">
                                                 <?php if ($entry['foto']): ?>
-                                                    <img src="<?= base_url('uploads/historial/' . esc($entry['foto'])) ?>" alt="Foto del árbol" class="w-20 rounded">
+                                                    <img src="<?= base_url('uploads/' . esc($entry['foto'])) ?>" alt="Foto del árbol" class="w-20 rounded">
                                                 <?php endif; ?>
                                             </td>
                                         </tr>

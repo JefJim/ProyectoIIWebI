@@ -35,7 +35,7 @@
                                 <tr class="bg-white border-b hover:bg-green-50">
                                     <!-- Foto -->
                                     <td class="px-6 py-4">
-                                        <img src="<?= base_url('uploads/' . esc($arbol['foto'])) ?>" alt="Foto del árbol" class="w-24 rounded">
+                                        <img src="<?= base_url('uploads/trees/' . esc($arbol['foto'])) ?>" alt="Foto del árbol" class="w-24 rounded">
                                     </td>
                                     <!-- Especie -->
                                     <td class="px-6 py-4"><?= esc($arbol['especie_nombre']) ?></td>

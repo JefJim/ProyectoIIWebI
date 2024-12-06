@@ -9,8 +9,6 @@ use CodeIgniter\Router\RouteCollection;
 // Rutas generales
 $routes->get('/', 'Home::index');
 
-
-
 $routes->get('/test-db', 'Home::testDatabase');
 $routes->get('/auth/login', 'Auth::login');
 $routes->post('/auth/authenticate', 'Auth::authenticate');

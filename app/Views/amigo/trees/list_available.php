@@ -36,7 +36,7 @@
                             <tr class="bg-white border-b hover:bg-green-50">
                                 <td class="px-6 py-4">
                                     <?php if (!empty($arbol['foto'])): ?>
-                                    <img src="<?= base_url('uploads/' . esc($arbol['foto'])) ?>" alt="Foto del árbol"
+                                    <img src="<?= base_url('uploads/trees/' . esc($arbol['foto'])) ?>" alt="Foto del árbol"
                                         class="h-16 w-16 object-cover rounded">
                                     <?php else: ?>
                                     <span class="text-gray-500">Sin foto</span>

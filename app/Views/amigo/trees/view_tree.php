@@ -41,7 +41,7 @@
                         <div class="bg-gray-50 px-4 py-5 sm:px-6">
                             <dt class="text-sm font-medium text-green-900">Foto</dt>
                             <dd class="mt-1 text-sm text-gray-900">
-                                <img src="<?= base_url('uploads/' . esc($arbol['foto'])) ?>" alt="Foto del árbol" class="w-48 rounded">
+                                <img src="<?= base_url('uploads/trees/' . esc($arbol['foto'])) ?>" alt="Foto del árbol" class="w-48 rounded">
                             </dd>
                         </div>
                     </dl>
