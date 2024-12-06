@@ -82,10 +82,14 @@
                 </div>
 
                 <!-- Botón Actualizar -->
-                <div class="flex justify-end">
+                <div class="flex justify-between items-align bg-green-900 p-3 text-white">
                     <button type="submit" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded text-white text-sm">
                         Actualizar
                     </button>
+                    <a href="/admin/usuarios" type="submit"
+                        class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded text-sm text-white">
+                        Atrás
+                    </a>
                 </div>
             </form>
         </div>

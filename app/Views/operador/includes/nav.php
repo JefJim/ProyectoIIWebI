@@ -15,10 +15,10 @@
                         <a href="/operador/dashboard" class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-green-700 hover:text-white">
                             Dashboard
                         </a>
-                        <a href="/operador/actualizar" class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-green-700 hover:text-white">
-                            Actualizar
+                        <a href="/operador/arboles" class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-green-700 hover:text-white">
+                            Amigos
                         </a>
-                        <a href="/operador/verHistorial" class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-green-700 hover:text-white">
+                        <a href="/operador/historialOperator" class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-green-700 hover:text-white">
                             Ver Historial
                     </div>
                 </div>

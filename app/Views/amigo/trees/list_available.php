@@ -33,20 +33,25 @@
                         </thead>
                         <tbody>
                             <?php foreach ($arboles as $arbol): ?>
-                                <tr class="bg-white border-b hover:bg-green-50">
-                                    <td class="px-6 py-4">
-                                        <img src="<?= base_url('uploads/' . esc($arbol['foto'])) ?>" alt="Foto del árbol" class="w-24 rounded">
-                                    </td>
-                                    <td class="px-6 py-4"><?= esc($arbol['especie']) ?></td>
-                                    <td class="px-6 py-4"><?= esc($arbol['ubicacion']) ?></td>
-                                    <td class="px-6 py-4">$<?= esc($arbol['precio']) ?></td>
-                                    <td class="px-6 py-4">
-                                        <a href="/amigo/arboles/<?= esc($arbol['id']) ?>/comprar" 
-                                           class="bg-green-600 hover:bg-green-700 text-white font-medium rounded-md px-4 py-2 text-sm">
-                                            Comprar
-                                        </a>
-                                    </td>
-                                </tr>
+                            <tr class="bg-white border-b hover:bg-green-50">
+                                <td class="px-6 py-4">
+                                    <?php if (!empty($arbol['foto'])): ?>
+                                    <img src="<?= base_url('uploads/' . esc($arbol['foto'])) ?>" alt="Foto del árbol"
+                                        class="h-16 w-16 object-cover rounded">
+                                    <?php else: ?>
+                                    <span class="text-gray-500">Sin foto</span>
+                                    <?php endif; ?>
+                                </td>
+                                <td class="px-6 py-4"><?= esc($arbol['especie']) ?></td>
+                                <td class="px-6 py-4"><?= esc($arbol['ubicacion']) ?></td>
+                                <td class="px-6 py-4">$<?= esc($arbol['precio']) ?></td>
+                                <td class="px-6 py-4">
+                                    <a href="/amigo/arboles/<?= esc($arbol['id']) ?>/comprar"
+                                        class="bg-green-600 hover:bg-green-700 text-white font-medium rounded-md px-4 py-2 text-sm">
+                                        Comprar
+                                    </a>
+                                </td>
+                            </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>

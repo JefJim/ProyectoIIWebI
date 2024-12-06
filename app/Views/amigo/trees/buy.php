@@ -23,23 +23,31 @@
                     <dl>
                         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt class="text-sm font-medium text-green-900">Especie</dt>
-                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><?= esc($arbol['especie_nombre']) ?></dd>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                <?= esc($arbol['especie_nombre']) ?></dd>
                         </div>
                         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt class="text-sm font-medium text-green-900">Ubicación</dt>
-                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><?= esc($arbol['ubicacion']) ?></dd>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><?= esc($arbol['ubicacion']) ?>
+                            </dd>
                         </div>
                         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt class="text-sm font-medium text-green-900">Precio</dt>
-                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">$<?= esc($arbol['precio']) ?></dd>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">$<?= esc($arbol['precio']) ?>
+                            </dd>
                         </div>
                     </dl>
                 </div>
                 <div class="px-4 py-4 sm:px-6 flex justify-end">
                     <form action="/amigo/arboles/<?= esc($arbol['id']) ?>/comprar" method="post">
-                        <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-medium rounded-md px-4 py-2 text-sm">
+                        <button type="submit"
+                            class="bg-green-600 hover:bg-green-700 text-white font-medium rounded-md px-4 py-2 text-sm">
                             Confirmar Compra
                         </button>
+                        <a href="/amigo/arboles" type="submit"
+                            class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded text-sm text-white">
+                            Cancelar
+                        </a>
                     </form>
                 </div>
             </div>

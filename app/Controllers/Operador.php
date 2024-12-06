@@ -22,6 +22,31 @@ class Operador extends BaseController
 
         return view('operador/dashboard', $data);
     }
+    public function listAmigos()
+    {
+        $userModel = new \App\Models\User();
+
+        // Obtener todos los usuarios con rol 'amigo'
+        $data['amigos'] = $userModel->where('rol', 'amigo')->findAll();
+
+        return view('operador/historial/list', $data);
+    }
+
+    public function viewArbolesAmigoOperator($amigo_id)
+    {
+        $treeModel = new \App\Models\Tree();
+
+        // Obtener todos los árboles relacionados con el amigo junto con el nombre de la especie
+        $data['arboles'] = $treeModel->select('arboles.*, especies.nombre_comercial AS especie')
+            ->join('especies', 'especies.id = arboles.especie_id', 'left')
+            ->where('arboles.amigo_id', $amigo_id)
+            ->findAll();
+
+        $data['amigo_id'] = $amigo_id;
+
+        return view('operador/historial/arboles', $data);
+
+    }
 
     public function listTrees()
     {
@@ -31,7 +56,7 @@ class Operador extends BaseController
             ->join('especies', 'especies.id = arboles.especie_id', 'left')
             ->findAll();
 
-        return view('admin/trees/list', $data);
+        return view('operador/historial/arboles', $data);
     }
 
     public function updateTree($id)
@@ -55,7 +80,7 @@ class Operador extends BaseController
             'foto' => $fileName,
         ]);
 
-        return redirect()->to('/admin/arboles')->with('success', 'Árbol actualizado correctamente.');
+        return redirect()->to('/operador/arboles')->with('success', 'Árbol actualizado correctamente.');
     }
 
 
@@ -80,7 +105,7 @@ class Operador extends BaseController
                     'foto'     => $newName,
                 ]);
 
-                return redirect()->to("/admin/arboles/$arbol_id/historial")->with('success', 'Actualización registrada con éxito.');
+                return redirect()->to("operador/arboles")->with('success', 'Actualización registrada con éxito.');
             }
         }
 
@@ -98,7 +123,7 @@ class Operador extends BaseController
         // Pasar el ID del árbol a la vista para referencia
         $data['arbol_id'] = $arbol_id;
 
-        return view('admin/trees/historial', $data);
+        return view('operador/historial/historialOperator', $data);
     }
 
 
@@ -114,6 +139,6 @@ class Operador extends BaseController
         }
 
         // Pasar información del árbol a la vista
-        return view('admin/trees/update_historial', ['arbol' => $tree]);
+        return view('operador/historial/update_historial', ['arbol' => $tree]);
     }
 }

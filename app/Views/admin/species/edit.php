@@ -23,10 +23,14 @@
                     <input id="nombre_cientifico" type="text" name="nombre_cientifico" value="<?= $species['nombre_cientifico'] ?>" required
                         class="mt-1 block w-full px-3 py-2 rounded-md border-0 shadow-sm ring-1 ring-green-300 focus:ring-2 focus:ring-green-600">
                 </div>
-                <div class="flex justify-end">
+                <div class="flex justify-between items-center bg-green-900 p-4 text-white">
                     <button type="submit" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded text-sm text-white">
                         Actualizar
                     </button>
+                    <a href="/admin/especies" type="submit"
+                        class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded text-sm text-white">
+                        Cancelar
+                    </a>
                 </div>
             </form>
         </div>

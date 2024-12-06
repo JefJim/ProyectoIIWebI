@@ -13,6 +13,10 @@
         <div class="flex justify-between items-center bg-green-900 p-4 text-white">
             <h1 class="text-xl font-bold">Lista de Especies</h1>
             <a href="<?= base_url('admin/especies/crear') ?>" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded text-sm">Agregar Especie</a>
+            <a href="/admin/dashboard" type="submit"
+                class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded text-sm text-white">
+                Atrás
+            </a>
         </div>
         <div class="relative overflow-x-auto mx-auto mt-4 max-w-5xl bg-white p-4 rounded-lg shadow-lg">
             <table class="w-full text-sm text-left text-green-900">

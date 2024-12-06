@@ -24,7 +24,12 @@ $routes->group('admin', ['filter' => 'adminAuth'], function ($routes) {
     $routes->get('/', 'Admin::index'); // Ruta principal del administrador
     $routes->get('dashboard', 'Admin::dashboard');
     
-
+    // Rutas historial
+    $routes->get('admin/arboles/(:num)', 'Admin::viewTree/$1'); // Ver detalles del árbol
+    $routes->post('/admin/arboles/(:num)/historial/guardar', 'Admin::saveHistorial/$1');
+    $routes->get('/admin/arboles/(:num)/historial/agregar', 'Admin::updateHistorialForm/$1');
+    $routes->post('/admin/arboles/(:num)/historial/agregar', 'Admin::saveHistorial/$1');
+    $routes->get('/admin/arboles/(:num)/historial', 'Admin::viewHistorial/$1');
 
     // CRUD de especies
     $routes->get('especies', 'Admin::listSpecies');
@@ -69,22 +74,18 @@ $routes->group('amigo', ['filter' => 'amigoAuth'], function ($routes) {
     $routes->get('mis-arboles/(:num)/historial', 'Amigo::viewHistorial/$1'); // Historial del árbol
 });
 
-
-$routes->get('admin/arboles/(:num)', 'Admin::viewTree/$1'); // Ver detalles del árbol
-
-$routes->post('/admin/arboles/(:num)/historial/guardar', 'Admin::saveHistorial/$1');
-
-$routes->get('/admin/arboles/(:num)/historial/agregar', 'Admin::updateHistorialForm/$1');
-$routes->post('/admin/arboles/(:num)/historial/agregar', 'Admin::saveHistorial/$1');
-
-$routes->get('/admin/arboles/(:num)/historial', 'Admin::viewHistorial/$1');
-
 // rutas de operador
 $routes->group('operador', ['filter' => 'operadorAuth'], function ($routes) {
     $routes->get('dashboard', 'Operador::dashboard'); // Página principal del operador
-    $routes->get('usuarios/crear', 'Admin::createUser');
-    $routes->post('usuarios/crear', 'Admin::storeUser');
-    $routes->get('usuarios/editar/(:num)', 'Admin::editUser/$1');
-    $routes->post('usuarios/editar/(:num)', 'Admin::updateUser/$1');
-    $routes->get('usuarios/eliminar/(:num)', 'Admin::deleteUser/$1');
+    $routes->get('arboles', 'Operador::listAmigos'); //listar los amigos
+    $routes->get('(:num)/arboles', 'Operador::viewArbolesAmigoOperator/$1'); //Ver arboles del amigo
+    $routes->get('(:num)/historialOperator', 'Operador::viewHistorial/$1'); // Ver historial del árbol
+    $routes->get('(:num)/update_historial', 'Operador::updateHistorialForm/$1'); //form para actualizar
+    $routes->post('(:num)/update_historial', 'Operador::saveHistorial/$1'); // guardar actualización
+    
 });
+$routes->get('admin/arboles/(:num)', 'Admin::viewTree/$1'); // Ver detalles del árbol
+$routes->post('/admin/arboles/(:num)/historial/guardar', 'Admin::saveHistorial/$1');
+$routes->get('/admin/arboles/(:num)/historial/agregar', 'Admin::updateHistorialForm/$1');
+$routes->post('/admin/arboles/(:num)/historial/agregar', 'Admin::saveHistorial/$1');
+$routes->get('/admin/arboles/(:num)/historial', 'Admin::viewHistorial/$1');
