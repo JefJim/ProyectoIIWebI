@@ -10,7 +10,7 @@ use App\Models\HistorialArboles;
 
 class Admin extends BaseController
 {
-    public function dashboard()
+    public function dashboard() //mostrar dash en la vista de admin
     {
         $userModel = new \App\Models\User();
         $treeModel = new \App\Models\Tree();
@@ -25,7 +25,7 @@ class Admin extends BaseController
     }
 
 
-    public function listSpecies()
+    public function listSpecies() //mostrar lista de especies en la vista de admin
     {
         $speciesModel = new Species();
         $data['species'] = $speciesModel->findAll();
@@ -33,12 +33,13 @@ class Admin extends BaseController
         return view('admin/species/list', $data);
     }
 
-    public function createSpecies()
+    public function createSpecies() //crear especie en la vista de admin
+    
     {
         return view('admin/species/create');
     }
 
-    public function storeSpecies()
+    public function storeSpecies() //guardar especie en la vista de admin
     {
         $speciesModel = new Species();
 
@@ -50,7 +51,7 @@ class Admin extends BaseController
         return redirect()->to('/admin/especies')->with('success', 'Especie creada correctamente.');
     }
 
-    public function editSpecies($id)
+    public function editSpecies($id) //editar especie en la vista de admin
     {
         $speciesModel = new Species();
         $data['species'] = $speciesModel->find($id);
@@ -58,7 +59,7 @@ class Admin extends BaseController
         return view('admin/species/edit', $data);
     }
 
-    public function updateSpecies($id)
+    public function updateSpecies($id) //actualizar especie en la vista de admin
     {
         $speciesModel = new Species();
 
@@ -70,7 +71,7 @@ class Admin extends BaseController
         return redirect()->to('/admin/especies')->with('success', 'Especie actualizada correctamente.');
     }
 
-    public function deleteSpecies($id)
+    public function deleteSpecies($id) //eliminar especie en la vista de admin
     {
         $speciesModel = new Species();
         $speciesModel->delete($id);
@@ -78,7 +79,7 @@ class Admin extends BaseController
         return redirect()->to('/admin/especies')->with('success', 'Especie eliminada correctamente.');
     }
 
-    public function listTrees()
+    public function listTrees() //mostrar lista de arboles en la vista de admin
     {
         $treeModel = new Tree();
 
@@ -90,7 +91,7 @@ class Admin extends BaseController
     }
 
 
-    public function createTree()
+    public function createTree() //crear arbol en la vista de admin
     {
         $speciesModel = new Species();
         $data['species'] = $speciesModel->findAll();
@@ -98,7 +99,7 @@ class Admin extends BaseController
         return view('admin/trees/create', $data);
     }
 
-    public function storeTree()
+    public function storeTree() //guardar arbol en la vista de admin
     {
         $treeModel = new Tree();
 
@@ -122,7 +123,7 @@ class Admin extends BaseController
         return redirect()->to('/admin/arboles')->with('success', 'Árbol creado correctamente.');
     }
 
-    public function editTree($id)
+    public function editTree($id) //editar arbol en la vista de admin
     {
         $treeModel = new Tree();
         $speciesModel = new Species();
@@ -133,7 +134,7 @@ class Admin extends BaseController
         return view('admin/trees/edit', $data);
     }
 
-    public function updateTree($id)
+    public function updateTree($id) //actualizar arbol en la vista de admin
     {
         $treeModel = new Tree();
 
@@ -157,7 +158,7 @@ class Admin extends BaseController
         return redirect()->to('/admin/arboles')->with('success', 'Árbol actualizado correctamente.');
     }
 
-    public function deleteTree($id)
+    public function deleteTree($id) //eliminar arbol en la vista de admin
     {
         $treeModel = new Tree();
         $tree = $treeModel->find($id);
@@ -172,12 +173,12 @@ class Admin extends BaseController
         return redirect()->to('/admin/arboles')->with('success', 'Árbol eliminado correctamente.');
     }
 
-    public function createUser()
+    public function createUser() //crear usuario en la vista de admin
     {
-        return view('admin/users/create'); // Asegúrate de que la ruta y la vista existen
+        return view('admin/users/create'); 
     }
 
-    public function listUsers()
+    public function listUsers()     //mostrar lista de usuarios en la vista de admin
     {
         $userModel = new User();
 
@@ -187,7 +188,7 @@ class Admin extends BaseController
         return view('admin/users/list', $data);
     }
 
-    public function storeUser()
+    public function storeUser() //guardar usuario en la vista de admin
     {
         $userModel = new User();
 
@@ -222,7 +223,7 @@ class Admin extends BaseController
         return redirect()->to('/admin/usuarios')->with('success', 'Usuario creado correctamente.');
     }
 
-    public function editUser($id)
+    public function editUser($id) //editar usuario en la vista de admin
     {
         $userModel = new User();
 
@@ -237,7 +238,7 @@ class Admin extends BaseController
     }
 
 
-    public function updateUser($id)
+    public function updateUser($id) //actualizar usuario en la vista de admin
     {
         $userModel = new User();
 
@@ -275,8 +276,8 @@ class Admin extends BaseController
 
         return redirect()->to('/admin/usuarios')->with('success', 'Usuario actualizado correctamente.');
     }
-
-    public function deleteUser($id)
+ 
+    public function deleteUser($id) //eliminar usuario en la vista de admin
     {
         $userModel = new User();
 
@@ -293,7 +294,7 @@ class Admin extends BaseController
         return redirect()->to('/admin/usuarios')->with('success', 'Usuario eliminado correctamente.');
     }
 
-    public function listAmigos()
+    public function listAmigos() //mostrar lista de amigos en la vista de admin
     {
         $userModel = new \App\Models\User();
 
@@ -303,7 +304,7 @@ class Admin extends BaseController
         return view('admin/amigos/list', $data);
     }
 
-    public function viewArbolesAmigo($amigo_id)
+    public function viewArbolesAmigo($amigo_id) //mostrar arboles de amigo en la vista de admin
     {
         $treeModel = new \App\Models\Tree();
 
@@ -318,7 +319,7 @@ class Admin extends BaseController
         return view('admin/amigos/arboles', $data);
     }
 
-    public function saveHistorial($arbol_id)
+    public function saveHistorial($arbol_id) //guardar historial en la vista de admin
     {
         // Verifica el valor de $arbol_id
         if (!$arbol_id) {
@@ -347,7 +348,7 @@ class Admin extends BaseController
     }
 
 
-    public function viewHistorial($arbol_id)
+    public function viewHistorial($arbol_id) //mostrar historial en la vista de admin
     {
         $historialModel = new \App\Models\HistorialArboles();
 
@@ -361,7 +362,7 @@ class Admin extends BaseController
     }
 
 
-    public function updateHistorialForm($tree_id)
+    public function updateHistorialForm($tree_id) //actualizar historial en la vista de admin
     {
         $treeModel = new \App\Models\Tree();
 

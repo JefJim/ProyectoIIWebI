@@ -13,7 +13,7 @@ class Auth extends BaseController
         return view('auth/login');
     }
 
-    public function authenticate()
+    public function authenticate()  // Método para autenticar a un usuario
 {
     $session = session();
     $userModel = new User();
@@ -49,7 +49,7 @@ class Auth extends BaseController
 }
 
 
-    public function signup()
+    public function signup() // Método para mostrar el formulario de registro
     {
         // Mostrar el formulario de registro
         return view('auth/signup');
@@ -93,7 +93,7 @@ class Auth extends BaseController
     }
 
 
-    public function logout()
+    public function logout() // Método para cerrar sesión
     {
         $session = session();
         $session->destroy();

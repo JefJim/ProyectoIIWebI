@@ -7,12 +7,12 @@ use App\Models\HistorialArboles;
 
 class Amigo extends BaseController
 {
-    public function dashboard()
+    public function dashboard() // Método para mostrar el dashboard del amigo
     {
         return view('amigo/dashboard');
     }
 
-    public function listAvailableTrees()
+    public function listAvailableTrees() // metodo para mostrar arboles disponibles en amigo
     {
         $treeModel = new \App\Models\Tree();
 
@@ -26,7 +26,7 @@ class Amigo extends BaseController
     }
 
 
-    public function buyTree($tree_id)
+    public function buyTree($tree_id) // Método para comprar un árbol
     {
         $treeModel = new \App\Models\Tree();
 
@@ -45,7 +45,7 @@ class Amigo extends BaseController
     }
 
 
-    public function storePurchase($tree_id)
+    public function storePurchase($tree_id) // Método para guardar la compra de un árbol
     {
         $treeModel = new Tree();
         $session = session();
@@ -59,7 +59,7 @@ class Amigo extends BaseController
         return redirect()->to('/amigo/mis-arboles')->with('success', '¡Has comprado el árbol con éxito!');
     }
 
-    public function listMyTrees()
+    public function listMyTrees() // Método para mostrar los árboles del amigo
     {
         $treeModel = new \App\Models\Tree();
         $speciesModel = new \App\Models\Species();
@@ -76,7 +76,7 @@ class Amigo extends BaseController
     }
 
 
-    public function viewTree($tree_id)
+    public function viewTree($tree_id) // Método para ver un árbol en detalle
     {
         $treeModel = new \App\Models\Tree();
 
@@ -96,7 +96,7 @@ class Amigo extends BaseController
     }
 
 
-    public function viewHistorial($id)
+    public function viewHistorial($id) // Método para ver el historial de un árbol
     {
         $historialModel = new \App\Models\HistorialArboles();
         $treeModel = new \App\Models\Tree();

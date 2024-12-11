@@ -10,7 +10,7 @@ use App\Models\HistorialArboles;
 
 class Operador extends BaseController
 {
-    public function dashboard()
+    public function dashboard() // Método para mostrar el dashboard del operador
     {
         $userModel = new \App\Models\User();
         $treeModel = new \App\Models\Tree();
@@ -22,7 +22,7 @@ class Operador extends BaseController
 
         return view('operador/dashboard', $data);
     }
-    public function listAmigos()
+    public function listAmigos() //metodo para mostrar amigos en el dash de operador
     {
         $userModel = new \App\Models\User();
 
@@ -32,7 +32,7 @@ class Operador extends BaseController
         return view('operador/historial/list', $data);
     }
 
-    public function viewArbolesAmigoOperator($amigo_id)
+    public function viewArbolesAmigoOperator($amigo_id) //metodo para mostrar arboles de amigo en el dash de operador
     {
         $treeModel = new \App\Models\Tree();
 
@@ -48,7 +48,7 @@ class Operador extends BaseController
 
     }
 
-    public function listTrees()
+    public function listTrees() //metodo para mostrar arboles en el dash del operador
     {
         $treeModel = new Tree();
 
@@ -59,7 +59,7 @@ class Operador extends BaseController
         return view('operador/historial/arboles', $data);
     }
 
-    public function updateTree($id)
+    public function updateTree($id) //metodo para actualizar arbol en el dash operador
     {
         $treeModel = new Tree();
 
@@ -84,7 +84,7 @@ class Operador extends BaseController
     }
 
 
-    public function saveHistorial($arbol_id)
+    public function saveHistorial($arbol_id) //metodo para guardar historial de arbol en el dash operador
     {
         // Verifica el valor de $arbol_id
         if (!$arbol_id) {
@@ -113,7 +113,7 @@ class Operador extends BaseController
     }
 
 
-    public function viewHistorial($arbol_id)
+    public function viewHistorial($arbol_id) //metodo para ver historial de arbol en el dash operador
     {
         $historialModel = new \App\Models\HistorialArboles();
 
@@ -127,7 +127,7 @@ class Operador extends BaseController
     }
 
 
-    public function updateHistorialForm($tree_id)
+    public function updateHistorialForm($tree_id) //metodo para actualizar historial de arbol en el dash operador
     {
         $treeModel = new \App\Models\Tree();
 

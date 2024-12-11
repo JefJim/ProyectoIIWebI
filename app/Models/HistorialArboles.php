@@ -13,7 +13,7 @@ class HistorialArboles extends Model
     protected $useSoftDeletes   = false; // Sin eliminaciones suaves
     protected $protectFields    = true; // Protege los campos
 
-    // Campos permitidos para operaciones de inserción/actualización
+    // Campos inserción/actualización
     protected $allowedFields = ['arbol_id', 'fecha', 'tamano', 'foto'];
     
 

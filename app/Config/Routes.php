@@ -21,7 +21,7 @@ $routes->post('/signup', 'Auth::storeSignup'); // Procesar el registro
 $routes->group('admin', ['filter' => 'adminAuth'], function ($routes) {
     $routes->get('/', 'Admin::index'); // Ruta principal del administrador
     $routes->get('dashboard', 'Admin::dashboard');
-    
+
     // Rutas historial
     $routes->get('admin/arboles/(:num)', 'Admin::viewTree/$1'); // Ver detalles del árbol
     $routes->post('/admin/arboles/(:num)/historial/guardar', 'Admin::saveHistorial/$1');
@@ -80,7 +80,7 @@ $routes->group('operador', ['filter' => 'operadorAuth'], function ($routes) {
     $routes->get('(:num)/historialOperator', 'Operador::viewHistorial/$1'); // Ver historial del árbol
     $routes->get('(:num)/update_historial', 'Operador::updateHistorialForm/$1'); //form para actualizar
     $routes->post('(:num)/update_historial', 'Operador::saveHistorial/$1'); // guardar actualización
-    
+
 });
 $routes->get('admin/arboles/(:num)', 'Admin::viewTree/$1'); // Ver detalles del árbol
 $routes->post('/admin/arboles/(:num)/historial/guardar', 'Admin::saveHistorial/$1');
